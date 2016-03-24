@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>FEDExam</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+		<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+		<script src="js/FEDExamUtils.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/searchController.js"></script>
+		<script src="js/controllers.js"></script>
+	</head>
+	  
+	<body>
+		<div class="container">
+			<div class="row" ng-app="FEDExam" ng-controller="SearchController">
+				
+				<!-- Search Container -->
+				<div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="colInner">
+
+						<div class="tblTr">
+							<div class="tblTd w100">
+								<input type="text" ng-model="search.value" id="searchInput" class="input-sm"/>
+							</div>
+							<div class="tblTd padd5"></div>
+							<div class="tblTd">
+								<button ng-click="searchSoundhCloud();" class="btn btn-primary btn-sm">Go</button>
+							</div>
+						</div>
+						
+						<div id="searchRes">
+							<div ng-view></div>
+					  		<script type="text/ng-template" id="list.htm">
+							<ul>
+								<a id="{{ res.id }}" class="cursorPoint ali list-group-item" ng-repeat="res in searchResults" ng-click="listItemClicked(res.artworkUrl, res.uri, res.id);">{{ res.title }}</a>
+					   		</ul>
+							</script>
+
+							<script type="text/ng-template" id="tile.htm">
+							<div class="row" id="tileRow">
+								<div ng-repeat="res in searchResults" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<img class="tileImg" id="{{ res.id }}" data-ng-src='{{ res.artworkUrl }}' ng-click="listItemClicked(res.artworkUrl, res.uri, res.id);"/>
+								</div>
+							</div>
+							</script>
+						</div>
+						
+						<!-- Buttons -->
+						<div class="tblTr">
+							<div class="tblTd w100">
+								<a ng-click="getNext();" ng-disabled="noNextHref()" class="btn btn-sm btn-primary">Next</a>
+							</div>
+							<div class="tblTd">
+								<a id="viewList" ng-href="#listView" class="btn btn-sm btn-primary" ng-click="saveView('list');" ng-disabled="disableListBtn()">List</a>
+							</div>
+							<div class="tblTd padd5"></div>
+							<div class="tblTd">
+								<a id="viewTile" ng-href="#tileView" class="btn btn-sm btn-primary" ng-click="saveView('tile');" ng-disabled="disableTileBtn()">Tile</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Image Container -->
+				<div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-controller="ImgController">
+					<div class="colInner">
+						<img id="img" ng-click="play();"/>
+						<div id="embedContainer"></div>
+					</div>
+				</div>
+				
+				<!-- Recent Searches Container -->
+				<div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="colInner">
+						<a href="#" class="list-group-item active cursorDef">Recent Searches</a>
+						<div id="recentSearchesContainer">
+							<ul>
+								<a class="cursorPoint aliTitled list-group-item" ng-repeat="rec in recentSearches" ng-click="searchSoundhCloud(rec);">{{ rec }}</a>
+						   	</ul>
+					   	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
