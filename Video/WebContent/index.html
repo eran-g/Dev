@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+    	<meta charset="utf-8">
+      	<title>Simple Video Library Project</title>
+      	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+      	<link rel="stylesheet" href="css/w3.css">
+      	<link rel="stylesheet" href="css/style.css">
+      	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+		<script src="js/script.js"></script>
+   	</head>
+	
+   	<body ng-app="videoApp">	
+   		
+   		<div ng-view></div>
+  		<script type="text/ng-template" id="main.htm">
+		<div class="tbl w100 margTop10">
+			<div class="tblTr">
+				<!-- Left spacer -->
+				<div class="tblTd w50"></div>
+				
+				<!-- Main video area -->
+				<div class="tblTd">
+					<div id="playerContainer">
+						<video ng-src="{{ videoPath }}" controls autoplay>
+							Your browser does not support the video tag.
+						</video>
+					</div>
+					<!-- Rating area -->
+					<div class="tblTr">
+						<div class="tblTd nowrap vamid">Rating: <span class="bold vamid">{{ mainVideo.rating }}</span></div>
+						<div class="tblTd w50"></div>
+						<div class="tblTd nowrap vamid">Rate the video:</div>
+						<div class="tblTd" ng-repeat="btn in ratingBtns">
+							<button ng-click="rate(btn)" class="w3-btn w3-light-grey w3-border w3-round w3-small margLeft5">{{ btn }}</button>
+						</div>
+					</div>								
+
+					<!-- Comment area -->
+					<div class="tbl w100 margTop10">
+						<div class="tblTr">
+							<div class="tblTd vamid nowrap">Add Comment:&nbsp;</div>
+							<div class="tblTd w100"><input type="text" ng-model="comment" class="w3-input w3-border w3-round w3-small w100"/></div>
+						</div>
+					</div>
+
+					<!-- Comment & info buttons area -->
+					<div class="tbl w100 margTop10">
+						<div class="tblTr">
+							<div class="tblTd w100">
+								<a ng-href="#details" class="w3-btn w3-light-grey w3-border w3-round w3-small w100">Video Detailed Info</a>
+							</div>
+							<div class="tblTd">
+								<button class="w3-btn w3-light-grey w3-border w3-round w3-small margLeft5" ng-click="saveComment()" ng-disabled="disableCommentBtn()">Save Comment</button>
+								<div id="commentConf" class="hidden w3-text-green w3-small w3-animate-zoom">Comment Saved</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Thumbs -->
+				<div class="tblTd">
+					<div ng-repeat="video in videos"><img class="thumb cursorPoint" ng-src="{{'thumb/' + video.thumb }}" ng-click="loadMainVideo(video)"/></div>
+				</div>
+				
+				<!-- Right spacer -->
+				<div class="tblTd w50"></div>
+			</div>
+		</div>
+		</script>
+
+		<script type="text/ng-template" id="details.htm">
+		<div class="tbl w100 margTop10">
+			<!-- To main view button row --> 
+			<div class="tblTr">
+				<!-- Left spacer -->
+				<div class="tblTd w50"></div>
+				
+				<!-- Details view, video player column -->
+				<div class="tblTd">
+					<video id="detailsPlayer" ng-src="{{ videoPath }}" width="400" preload="auto" controls>
+						Your browser does not support the video tag.
+					</video>
+
+					<div class="vtitle">Comments:</div>
+					<div id="commentCont">
+						<div ng-repeat="comment in videoDetails.comments" class="w3-container w3-section w3-blue w3-round" style="margin-bottom:10px;">
+							<div>{{ comment.text }}</div>
+							<div class="right">{{ comment.date }}</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Details view, details column -->
+				<div class="tblTd" style="padding-left: 10px;">
+					<div class="nowrap"><span class="vtitle">Title: </span><span class="vval">{{ videoDetails.video.title }}</span></div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="vtitle">Description: </div>
+					<div class="vval">{{ videoDetails.video.description }}</div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="vtitle">Thumbnail Image: </div>
+					<div><img src="thumb/{{ videoDetails.video.thumb }}" /></div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="nowrap"><span class="vtitle">Type: </span><span class="vval">{{ videoDetails.video.filename.split('.')[1] }}</span></div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="nowrap"><span class="vtitle">Duration: </span><span class="vval">{{ vduration }}</span></div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="nowrap"><span class="vtitle">Rating: </span><span class="vval">{{ videoDetails.video.rating }}</span></div>
+					<div class="vidDetailsSpacer"></div>
+					<div class="nowrap"><span class="vtitle">Added At: </span><span class="vval">{{ videoDetails.video.datestr }}</span></div>
+					<div class="vidDetailsSpacer"></div>
+					<div><a ng-href="#main" class="w3-btn w3-light-grey w3-border w3-round w3-small">To Main View</a></div>
+				</div>
+				
+				<!-- Right spacer -->
+				<div class="tblTd w50"></div>
+
+			</div>
+		</div>
+		</script>
+   </body>   
+</html>
