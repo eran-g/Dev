@@ -10,7 +10,7 @@ FEDExamApp.controller('ImgController', function($scope) {
 
 		SC.oEmbed($scope.selectedTrack.uri, 
 		{auto_play: true,
-		 maxheight: 100}).then(function(oEmbed) {
+		 maxheight: '60%'}).then(function(oEmbed) {
 			$("div#embedContainer").html(oEmbed.html);
 		});
 	}
