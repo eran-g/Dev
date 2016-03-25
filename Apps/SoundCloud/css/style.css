@@ -30,7 +30,7 @@ div#searchRes{
 	border: 0px solid red;
 }
 div#tileRow{
-	width: 360px;
+	width: 100%;
 }
 input#searchInput{
 	width: 100%;
