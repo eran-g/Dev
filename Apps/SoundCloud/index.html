@@ -6,7 +6,6 @@
 		<title>SoundCloud</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/style.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
 		<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
@@ -16,7 +15,7 @@
 	<body>
 		<div class="container">
 			<div class="row" ng-app="SoundCloud" ng-controller="SearchController">
-				
+
 				<!-- Search Container -->
 				<div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
 					<div class="colInner">
@@ -35,14 +34,14 @@
 							<div ng-view></div>
 					  		<script type="text/ng-template" id="list.htm">
 							<ul>
-								<a id="{{ res.id }}" class="cursorPoint ali list-group-item" ng-repeat="res in searchResults" ng-click="listItemClicked(res.artworkUrl, res.uri, res.id);">{{ res.title }}</a>
+								<a id="{{ res.id }}" ng-repeat="res in searchResults" ng-click="listItemClicked(res);" class="cursorPoint ali list-group-item">{{ res.title }}</a>
 					   		</ul>
 							</script>
 
 							<script type="text/ng-template" id="tile.htm">
 							<div class="row" id="tileRow">
 								<div ng-repeat="res in searchResults" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-									<img class="tileImg" id="{{ res.id }}" data-ng-src='{{ res.artworkUrl }}' ng-click="listItemClicked(res.artworkUrl, res.uri, res.id);"/>
+									<img class="tileImg" id="{{ res.id }}" data-ng-src='{{ res.artworkUrl }}' ng-click="listItemClicked(res);"/>
 								</div>
 							</div>
 							</script>
@@ -66,8 +65,8 @@
 				
 				<!-- Image Container -->
 				<div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<div class="colInner">
-						<img ng-style="imgStyle" id="img" ng-click="play();"/>
+					<div class="colInner" id="imgcont">
+						<img ng-src="{{imgSrc}}" ng-style="imgStyle" id="img" ng-click="play();"/>
 						<div ng-bind-html="embedContainer"></div>
 					</div>
 				</div>

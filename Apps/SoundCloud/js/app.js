@@ -1,41 +1,3 @@
-var FEDExamUtils = {}
-
-FEDExamUtils.arrIndexOfInsensitive = function(arr, searchElement, fromIndex) {
-	
-    return arr.map(function (value) {
-    	
-        return value.toLowerCase();
-    }).indexOf(searchElement.toLowerCase(), fromIndex);
-}
-
-FEDExamUtils.flyToElement = function(flyer, flyingTo, artworkUrl) {
-	
-    var $func = $(this);
-    var divider = 3;
-    var flyerClone = $(flyer).clone();
-    $(flyerClone).css({position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000});
-    $('body').append($(flyerClone));
-    var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
-    var gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
-     
-    $(flyerClone).animate({
-        opacity: 0.4,
-        left: gotoX,
-        top: gotoY,
-        width: $(flyer).width()/divider,
-        height: $(flyer).height()/divider
-    }, 700,
-    function () {
-        $(flyingTo).fadeOut('fast', function () {
-	        $(flyerClone).fadeOut('fast', function () {
-	            $(flyerClone).remove();
-	            $("img#img").attr("src", artworkUrl);
-				$("img#img").show();
-	        });
-        });
-    });
-}
-
 angular.element(document).ready(function (){
 		
 	// Sound Cloud Init
@@ -85,10 +47,10 @@ SoundCloudApp.controller('SearchController', function($scope, $http, $sce, maxSe
        value: ""
     };
 	$scope.selectedTrack = {uri:null, html:""};
-	$scope.imgSrc = "";
 	var recentSearchesArr = [];
 	
 	$scope.searchSoundhCloud = function(searchVal){
+		
 		
 		if(searchVal != null){
 
@@ -108,7 +70,7 @@ SoundCloudApp.controller('SearchController', function($scope, $http, $sce, maxSe
 			
 			if(searchVal == null){
 				
-				if($scope.search.value != "" && FEDExamUtils.arrIndexOfInsensitive(recentSearchesArr, $scope.search.value) == -1){
+				if($scope.search.value != "" && arrIndexOfInsensitive(recentSearchesArr, $scope.search.value) == -1){
 					
 					localStorage.recentSearches = $scope.search.value + "," + localStorage.recentSearches;
 				}
@@ -155,14 +117,12 @@ SoundCloudApp.controller('SearchController', function($scope, $http, $sce, maxSe
 		});
 	}
 	
-	$scope.listItemClicked = function(artworkUrl, uri, id){
-		
-		$scope.embedContainer = $sce.trustAsHtml('');
+	$scope.listItemClicked = function(res){
 
-		FEDExamUtils.flyToElement($("#" + id), $("img#img"), artworkUrl);
+		$scope.embedContainer = $sce.trustAsHtml('');
+		$scope.imgSrc = res.artworkUrl;
+		$scope.selectedTrack.uri = res.uri;
 		$scope.imgStyle = {'visibility':'visible'};
-		
-		$scope.selectedTrack.uri = uri;
 	}
 	
 	$scope.saveView = function(view){
@@ -194,3 +154,11 @@ SoundCloudApp.controller('SearchController', function($scope, $http, $sce, maxSe
 		}
 	}
 });
+
+function arrIndexOfInsensitive(arr, searchElement, fromIndex) {
+	
+    return arr.map(function (value) {
+    	
+        return value.toLowerCase();
+    }).indexOf(searchElement.toLowerCase(), fromIndex);
+}
