@@ -11,7 +11,7 @@
 			<property name="openjpa.ConnectionDriverName" value="org.apache.commons.dbcp.BasicDataSource"/>
 			<property name="openjpa.ConnectionProperties" 
                 value="DriverClassName=com.mysql.jdbc.Driver,
-                	Url=jdbc:mysql://localhost:3306/video?autoReconnect=true, 
+                	Url=jdbc:mysql://localhost:3306/video?autoReconnect=true,
                   	MaxActive=500, 
                   	TestOnBorrow=true, 
                   	Username=root, 

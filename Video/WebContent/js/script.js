@@ -73,7 +73,8 @@ videoApp.controller('mainController', function($scope, $http, origin) {
 		
 		$http({method: 'POST', 
 		       url: origin + '/rest/VideoService/comment',
-		       params: {id : $scope.mainVideo.id, comment : $scope.comment}})
+		       params: {id : $scope.mainVideo.id, comment : $scope.comment},
+		       headers: {'Content-Type': 'application/json; charset=UTF-8'}})
 		.success(function(response) {
 
 			confirmComment();
