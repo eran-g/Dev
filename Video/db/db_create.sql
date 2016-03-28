@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `video`.`comment`;
 CREATE TABLE  `video`.`comment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `videoid` int(10) unsigned NOT NULL,
-  `text` varchar(250) CHARACTER SET latin1 DEFAULT NULL,
+  `text` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `datestr` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
