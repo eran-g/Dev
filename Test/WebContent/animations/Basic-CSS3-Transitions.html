@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Basic CSS3 Transitions</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<style type="text/css">
+		.container{
+			text-align: center;
+		}
+		.box {
+		  margin: 50px auto;
+		  background: #5FCF80;
+		  width: 150px;
+		  height: 150px;
+		}
+		.box:hover {
+		  transform: rotate(360deg);
+		  background: #9351A6;
+		  border-radius: 50%;
+		}
+		.rotate {
+		  transition: all 0.5s ease-in-out;
+		}
+		.rotate:hover {
+		  transition: all 1s ease-in-out;
+		}
+	</style>
+	</head>
+	  
+	<body>
+		<div class="container">
+			<h1>Basic CSS3 Transitions</h1>
+		  <div class="box rotate"></div>
+		</div>
+	</body>
+</html>

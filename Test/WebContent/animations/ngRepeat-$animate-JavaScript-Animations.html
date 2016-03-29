@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ngRepeat $animate JavaScript Animations</title>
+		<meta charset="utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
+		<style type="text/css">
+		.container{
+			text-align: center;
+			border: 1px solid red;
+			width: 700px;
+			margin: auto;
+		}
+		.text-center {
+		  text-align: center;
+		}
+		li span {
+		  float: right;
+		  cursor: pointer;
+		}
+	</style>
+		<script type="text/javascript">
+		var app = angular.module('myApp', ['ngAnimate']);
+		app.controller('ItemCtrl', function($scope) {
+		  $scope.items = [
+		    {name: "Lunchmeat"},
+		    {name: "Bread"},
+		    {name: "Milk"},
+		    {name: "Mustard"},
+		    {name: "Cheese"}
+		  ];
+		  $scope.addItem = function() {
+		    $scope.items.push($scope.item);
+		    $scope.item = {};
+		  };
+		  $scope.removeItem = function(index) {
+			  console.log('index: ' + index);
+		    $scope.items.splice(index, 1);
+		  };
+		});
+		
+		app.animation('.fade', function() {
+		  return {
+		    enter: function(element, done) {
+		      element.css('display', 'none');
+		      $(element).fadeIn(1000, function() {
+		        done();
+		      });
+		    },
+		    leave: function(element, done) {
+		      $(element).fadeOut(1000, function() {
+		        done();
+		      });
+		    },
+		    move: function(element, done) {
+		      element.css('display', 'none');
+		      $(element).slideDown(500, function() {
+		        done();
+		      });
+		    }
+		  }
+		})
+		</script>
+	</head>
+	  
+	<body>
+		<div class="container" ng-app="myApp" ng-controller="ItemCtrl">
+		  <h1>ngRepeat $animate JavaScript Animations</h1>
+		  <div class="row">
+		    <div class="one-half column offset-by-three">
+		      <h1 class="text-center">Groceries</h1>
+		      <ul>
+		        <li ng-repeat="item in items" class="fade">
+		          {{item.name}}
+		          <span ng-click="removeItem($index)">X</span>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		  <div class="row">
+		    <div class="one-half column offset-by-three">
+		      <input type="text" ng-model="item.name" />
+		      <button class="button-primary" ng-click="addItem()">Add Item</button>
+		    </div>
+		  </div>
+		</div>
+	</body>
+</html>
