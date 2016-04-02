@@ -13,7 +13,7 @@
 		.text-center {
 		  text-align: center;
 		}
-		li span {
+		li span.cls{
 		  float: right;
 		  cursor: pointer;
 		}
@@ -56,12 +56,28 @@
 		.fade.ng-leave.ng-leave-active {
 		  opacity: 0;
 		}
+		
+		@-webkit-keyframes moveRight {
+		    from {left:0px;}
+		    to {
+		    	left:300px; 
+		    	visibility: hidden;
+		    	color: red;
+		    }
+		}
+		
+		.myMove{
+			position:relative;
+			-webkit-animation-name: moveRight;
+			-webkit-animation-duration: 1s;
+			-webkit-animation-fill-mode: forwards;
+		}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
 	<script type="text/javascript">
 	angular.module('myApp', ['ngAnimate'])
-	.controller('ItemCtrl', function($scope) {
+	.controller('ItemCtrl', function($scope, $animate) {
 	  $scope.items = [
 	    {name: "Lunchmeat"},
 	    {name: "Bread"},
@@ -69,14 +85,34 @@
 	    {name: "Mustard"},
 	    {name: "Cheese"}
 	  ];
+	  
 	  $scope.addItem = function() {
 	    $scope.items.push($scope.item);
 	    $scope.item = {};
 	  };
+	  
 	  $scope.removeItem = function(index) {
-		  console.log('index: ' + index);
 	    $scope.items.splice(index, 1);
 	  };
+	  
+	  $scope.itemClicked = function(id){
+		
+		  // If jQuery is available, angular.element is an alias for the jQuery function.
+		  //var ngElem = angular.element('#' + id);
+		  
+		  var from = {
+		   };
+		  
+		  var to = {
+			'position':'relative',
+			'left':'300px',
+			'-webkit-animation-name': 'moveRight',
+			'-webkit-animation-duration': '1s'
+		   };
+
+		  //$animate.animate(angular.element(document.querySelector('#' + id)), from, to);
+		  $animate.addClass(angular.element(document.querySelector('#' + id)), 'myMove');
+	  }
 	});
 	</script>
 	</head>
@@ -89,8 +125,8 @@
 		      <h1 class="text-center">Groceries</h1>
 		      <ul>
 		        <li ng-repeat="item in items" class="fade">
-		          {{item.name}}
-		          <span ng-click="removeItem($index)">X</span>
+		          <span id="{{ 'li' + $index }}" ng-click="itemClicked('li' + $index);">{{item.name}}</span>
+		          <span class="cls" ng-click="removeItem($index)">X</span>
 		        </li>
 		      </ul>
 		    </div>
@@ -102,5 +138,6 @@
 		    </div>
 		  </div>
 		</div>
+		<div id="dest">Dest</div>
 	</body>
 </html>

@@ -20,6 +20,17 @@
 		  float: right;
 		  cursor: pointer;
 		}
+		@keyframes appear {
+		  from {
+		    opacity: 0;
+		  }
+		  to {
+		    opacity: 1;
+		  }
+		}
+		.fade {
+		  animation: 1s appear;
+		}
 	</style>
 		<script type="text/javascript">
 		var app = angular.module('myApp', ['ngAnimate']);
@@ -43,17 +54,20 @@
 		app.animation('.fade', function() {
 		  return {
 		    enter: function(element, done) {
+		    	console.log('enter');
 		      element.css('display', 'none');
 		      $(element).fadeIn(1000, function() {
 		        done();
 		      });
 		    },
 		    leave: function(element, done) {
+		    	console.log('leave');
 		      $(element).fadeOut(1000, function() {
 		        done();
 		      });
 		    },
 		    move: function(element, done) {
+		    	console.log('move');
 		      element.css('display', 'none');
 		      $(element).slideDown(500, function() {
 		        done();
