@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		b{color:red;}
+		</style>
+		<script type="text/javascript">
+		var myData = [
+			2445,
+			{
+				locations: ['idaho', 'new york', 'london'],
+				items: [
+					{name: 'monitor', price: 239.99},
+					{name: 'keyboard', price: 19.99}
+				],
+				calculate: function(a, b){return a + b;}
+			},
+			[11, 22, 33],
+			{
+				employees: [
+					{name: 'john, smith', age: 46},
+					{name: 'elizabeth, mcklay', price: 41}
+				],
+				getBirthYear: function(age){return age;},
+				codes: [11, 56, 7655, 3444, 67, 888, 100],
+				tags: {
+					name: 'A1',
+					x: 0.0001
+				}
+			},
+			function latency(a, b, c){return a + b + c;}
+		];
+		
+		function printData(data, indentCount){
+			
+			for(var ind = 0; ind < indentCount; ind++){
+				
+				document.write('&nbsp;&nbsp;&nbsp;&nbsp;');
+			}
+			
+			if(typeof data == 'number'){
+				
+				document.write('this is a number <b>' + data + '</b><br>');
+			}else if(typeof data == 'string'){
+				
+				document.write('this is a string<b>: ' + data + '</b><br>');
+			}else if(typeof data == 'function'){
+				
+				document.write('this is a function with code: <b>' + data + '</b><br>');
+			}else if(typeof data == 'object'){
+				
+				if(Array.isArray(data)){
+
+					document.write('this is an array with <b>' + data.length + '</b> elemnts<br>');
+				}else{
+					
+					document.write('this is an object with below properties<br>');
+				}
+				for (var i in data) {
+					
+					printData(data[i], indentCount+1);
+				}
+			}
+		}
+		printData(myData, 0);
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>
