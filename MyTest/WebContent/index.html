@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html style="height: 100%;">
+    <head>
+        <title>HTML to PDF</title>
+        <script type="text/javascript">
+        function f(){
+    		var data = "{name: 'Bob', occupation: 'Plumber'}";
+    		var url = 'data:text/json;charset=utf8,' + encodeURIComponent(data);
+    		window.open(url, '_blank');
+    		window.focus();
+        }
+    	</script>
+    </head>
+    <body style="height: 100%; text-align: center;">
+    	<a href="javascript:f();">f</a>
+    	<div style="width:500px; height:200px; border: 1px solid red;">
+			<APPLET CODE="Main.class" WIDTH="800" HEIGHT="500">
+			</APPLET>
+		</div>
+        <h1 style="text-align: center;">HTML to PDF</h1>
+        <div><img alt="" src="itext-html-pdf.png"/></div>
+        <div><iframe style="width: 500px; height: 500px;" src="Townhouse_PC34-42471595350787.pdf"></iframe></div>
+    	<div><embed src="Townhouse_PC34-42471595350787.pdf" type="application/pdf"></embed></div>
+    </body>
+</html>
