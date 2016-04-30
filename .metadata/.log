@@ -1,0 +1,54 @@
+!SESSION 2016-04-30 14:27:35.262 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -showlocation
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-04-30 14:28:15.356
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\erang'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jpt.jpa.core 4 0 2016-04-30 14:29:27.566
+!MESSAGE null JPA platform: P/Video
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.buildJpaProject(InternalJpaProjectManager.java:643)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.buildJpaProject(InternalJpaProjectManager.java:635)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.buildJpaProject(InternalJpaProjectManager.java:628)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.addJpaProject(InternalJpaProjectManager.java:609)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.buildJpaProject_(InternalJpaProjectManager.java:312)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$BuildJpaProjectCommand.execute(InternalJpaProjectManager.java:306)
+	at org.eclipse.jpt.common.core.internal.utility.command.CommandJobCommandAdapter.execute(CommandJobCommandAdapter.java:50)
+	at org.eclipse.jpt.common.core.internal.utility.command.JobCommandJob.run(JobCommandJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2016-04-30 14:34:14.768
+!MESSAGE cacheFile=file:/C:/Dev/eclipse-jee-mars-2-win32-x86_64/configuration/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2016-04-30 14:34:33.683
+!MESSAGE cacheFile=file:/C:/Dev/eclipse-jee-mars-2-win32-x86_64/configuration/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-04-30 15:09:33.481
+!MESSAGE Exception caught during execution of add command
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of add command
+	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:211)
+	at org.eclipse.egit.core.op.CommitOperation.addUntracked(CommitOperation.java:224)
+	at org.eclipse.egit.core.op.CommitOperation.access$4(CommitOperation.java:212)
+	at org.eclipse.egit.core.op.CommitOperation$1.run(CommitOperation.java:197)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.CommitOperation.execute(CommitOperation.java:208)
+	at org.eclipse.egit.ui.internal.commit.CommitJob.run(CommitJob.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: The process cannot access the file because another process has locked a portion of the file
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(Unknown Source)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:303)
+	at org.eclipse.jgit.internal.storage.file.ObjectDirectoryInserter.insert(ObjectDirectoryInserter.java:103)
+	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:187)
+	... 7 more
