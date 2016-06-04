@@ -1,0 +1,24 @@
+04/06/16 13:12:38 DEBUG # test debug
+04/06/16 13:18:33 DEBUG # test debug
+04/06/16 13:18:48 DEBUG # test debug
+04/06/16 13:19:48 DEBUG # test debug
+04/06/16 13:19:49 DEBUG # test debug
+04/06/16 13:21:37 DEBUG # test debug
+04/06/16 13:27:53 DEBUG # test debug
+04/06/16 13:35:10 DEBUG # com.test.util.AppLogger test debug
+04/06/16 13:35:53 DEBUG com.test.util.AppLogger # test debug
+04/06/16 13:36:53 DEBUG AppLogger.java # test debug
+04/06/16 13:38:20 DEBUG debug # test debug
+2016-06-04-main--DEBUG-debug     :test debug
+2016-06-04-main--DEBUG-debug     :test debug
+2016-06-04--DEBUG-debug     :test debug
+2016-06-04 13:46:38--DEBUG-debug     :test debug
+2016-06-04 13:47:39--debug     :test debug
+04/06/16 13:48:05 DEBUG # test debug
+2016-06-04 13:48:47 DEBUG # test debug
+2016-06-04 13:49:31 DEBUG#test debug
+2016-06-04 13:49:45 DEBUG # test debug
+2016-06-04 13:51:47 DEBUG # test debug
+2016-06-04 13:51:48 DEBUG # test debug
+2016-06-04 13:51:49 DEBUG # test debug
+2016-06-04 13:51:57 DEBUG # test debug

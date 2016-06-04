@@ -1,0 +1,16 @@
+import org.apache.log4j.Logger;
+
+public class Test {
+
+	static Logger logger = Logger.getLogger(Test.class.getName());
+	
+	public static void main(String[] args) {
+
+		System.out.println("Test.class.getName(): " + Test.class.getName());
+		
+		logger.debug("Hello this is a debug message");
+	    logger.info("Hello this is an info message");
+	    
+        System.out.println("Test.main() Done.");
+	}
+}

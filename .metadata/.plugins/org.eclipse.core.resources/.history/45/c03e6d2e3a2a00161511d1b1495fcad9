@@ -1,0 +1,155 @@
+package com.test.util;
+
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+
+public class AppLogger extends Logger{
+	
+	public static final String STATUS_OK = "ok";
+	public static final String STATUS_FAIL = "fail";
+	//private boolean sendSMS = false;
+	private static Map<String, String> messageBuff = new HashMap<String, String>();
+
+	//private final BusinessAlertManager m_businessAlertManager;
+
+	public AppLogger(){
+		super("debug");
+	}
+		
+	public AppLogger(String id){
+		super(id);
+	}
+	
+	public void debug(String msg){
+		getLogger("debug").debug(msg);
+	}
+
+	public void alert(String msg){
+		getLogger("alert").info(msg);
+	}
+	
+	public void error(Throwable e){
+		error((Exception)e);
+	}
+	
+	public void error(RollbackException e){
+		error((Exception)e);
+	}
+	
+	public void error(Exception e){
+		
+		printStack(e);
+		String msg = e.toString(); 
+		try{
+			msg = e.getClass().getSimpleName()+"\n";
+			
+			msg += "  "+new XStr(e.getMessage(),150).toString().trim()+"\n";
+			
+			StackTraceElement[] stack = e.getStackTrace();
+			boolean found = false;
+			
+			for(int i=0; !found && i<stack.length; i++){
+				if(stack[i].getClassName().startsWith("com.mk.") || stack[i].getClassName().startsWith("com.nw.")){
+					found = true;
+					msg += "  "+stack[i].getClassName()+" --> ";
+					msg += stack[i].getMethodName()+" (";
+					msg += stack[i].getLineNumber()+")";
+				}
+			}
+		}catch (Exception e1) {}
+		
+		getLogger("errors").error(msg);
+	}
+	
+	
+	private void printStack(Exception e) {
+		
+		String exStr = ExceptionHelper.getExceptionLogStr(e); 
+		getLogger("temp").info(exStr);
+	}
+
+	public void error(String msg){
+		getLogger("errors").error(msg);
+	}
+	
+	public void error(String msg, Exception e){
+		getLogger("errors").error(msg+" Exception: "+e.toString());
+	}
+
+	public void info(String msg){
+		getLogger("info").info(msg);
+	}
+
+	public void web(String msg){
+		getLogger("web").info(msg);
+	}
+	
+	public static void debugUnique(String msg) {
+		if (messageBuff.size()>1000){
+			return;
+		}
+		if (messageBuff.containsKey(msg)){
+			return;
+		}
+		messageBuff.put(msg,msg);
+	}
+
+	public static String getDebugUniqueStr() {
+		
+		Iterator<String> i = messageBuff.values().iterator();
+		StringBuffer sb = new StringBuffer();
+		sb.append("--------- dump start ------------<br>");
+		
+		while(i.hasNext()){
+			String msg =i.next();
+			sb.append(msg+"<br>");
+		}
+		sb.append("--------- dump end ------------");
+		return sb.toString();
+	}
+	
+	public void user(Integer userId, HttpServletRequest req, String msg){
+		
+		// TODO this method should: 1. encrypt log content. 2. save to db
+		
+		String params = getRequestParamsStr(req);
+		
+		if(userId != null){
+			getLogger("user").info("["+userId+"] "+ msg+ " " + params);
+		}else{
+			getLogger("user").info("[--] "+ msg+ " " + params);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private String getRequestParamsStr(HttpServletRequest req){
+		
+		Enumeration<String> pnames = req.getParameterNames();
+		StringBuffer buff = new StringBuffer();
+		
+		while(pnames.hasMoreElements()){
+			
+			String pname = pnames.nextElement();
+			if(!pname.toLowerCase().equals("password")){
+				String pval = new XStr(req.getParameter(pname),20).toString();
+				if(pval.trim().length()>0){
+					String v = "["+pname + "=" + pval+"]";
+					buff.append(v);
+				}
+			}
+		}
+		return buff.toString();
+	}
+
+	public static void clearUniqueStr() {
+		messageBuff.clear();
+	}
+
+	
+}

@@ -1,0 +1,42 @@
+package com.test.util;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.log4j.PropertyConfigurator;
+
+import com.test.util.AppLogger;
+
+public class AppLog {
+	
+	private static final AppLogger theLogger = new AppLogger();
+	
+	//static {
+		//init();
+	//}
+	/*
+	private static void init(){
+		Properties props;
+		try {
+			props = PropertiesHelper.loadProperties(NowanderConst.LOG4J_PROPS_PATH);
+			PropertyConfigurator.configure(props);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}*/
+
+	public static AppLogger getLogger(Class id){
+		return getLogger();
+	}
+	
+	public static AppLogger getLogger(String id){
+		return getLogger();
+	}
+
+	public static AppLogger getLogger(){
+		return theLogger;
+	}
+
+	
+}

@@ -1,0 +1,4 @@
+2016-05-30 23:56:03,331 [               Test.java:main:13] - this is a debug log message
+2016-05-30 23:58:15,619 [               Test.java:main:13] - this is a debug log message
+2016-05-30 23:58:16,999 [               Test.java:main:13] - this is a debug log message
+2016-05-30 23:58:29,784 [               Test.java:main:13] - this is a debug log message

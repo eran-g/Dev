@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Dev/itext-5.5.9/itextpdf-5.5.9.jar"/>
 	<classpathentry kind="lib" path="C:/Dev/itext-5.5.9/xmlworker-5.5.9.jar"/>
+	<classpathentry kind="lib" path="C:/Dev/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

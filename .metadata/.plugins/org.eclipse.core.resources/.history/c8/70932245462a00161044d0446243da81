@@ -1,0 +1,26 @@
+04/06/16 13:10:35 ERROR #  test err
+04/06/16 13:12:02 ERROR #  test err
+04/06/16 13:12:38 ERROR #  test err
+04/06/16 13:18:33 ERROR #  test err
+04/06/16 13:18:48 ERROR #  test err
+04/06/16 13:19:48 ERROR #  test err
+04/06/16 13:19:49 ERROR #  test err
+04/06/16 13:21:37 ERROR #  test err
+04/06/16 13:27:53 ERROR #  test err
+04/06/16 13:35:10 ERROR # com.test.util.AppLogger  test err
+04/06/16 13:35:53 ERROR com.test.util.AppLogger #  test err
+04/06/16 13:36:53 ERROR AppLogger.java #  test err
+04/06/16 13:38:20 ERROR error #  test err
+2016-06-04-main--ERROR-errors    : test err
+2016-06-04-main--ERROR-errors    : test err
+2016-06-04--ERROR-errors    : test err
+2016-06-04 13:46:38--ERROR-errors    : test err
+2016-06-04 13:47:39--errors    : test err
+04/06/16 13:48:05 ERROR #  test err
+2016-06-04 13:48:47 ERROR #  test err
+2016-06-04 13:49:31 ERROR# test err
+2016-06-04 13:49:45 ERROR #  test err
+2016-06-04 13:51:47 ERROR #  test err
+2016-06-04 13:51:48 ERROR #  test err
+2016-06-04 13:51:49 ERROR #  test err
+2016-06-04 13:51:57 ERROR #  test err

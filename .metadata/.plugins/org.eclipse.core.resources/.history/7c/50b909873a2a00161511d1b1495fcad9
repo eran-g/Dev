@@ -1,0 +1,18 @@
+import org.apache.log4j.Logger;
+
+import com.test.util.AppLog;
+import com.test.util.AppLogger;
+
+public class Log4jTest {
+
+	//static Logger logger = Logger.getLogger(Log4jTest.class.getName());
+	private final AppLogger log = AppLog.getLogger(this.getClass().getName());
+	
+	public static void main(String[] args) {
+
+		System.out.println("Log4jTest.class.getName(): " + Log4jTest.class.getName());
+				
+	    
+        System.out.println("Log4jTest.main() Done.");
+	}
+}

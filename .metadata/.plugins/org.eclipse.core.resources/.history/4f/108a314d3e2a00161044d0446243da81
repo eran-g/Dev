@@ -1,0 +1,40 @@
+# Define the root logger with appender file
+logsPath = logs
+rollingFileAppender = org.apache.log4j.RollingFileAppender
+maxFileSize = 1000KB
+maxBackupIndex = 10
+layout = org.apache.log4j.PatternLayout
+conversionPattern = %d{dd/MM/yy HH:mm:ss} %-5p # %m%n
+encoding = UTF-8
+
+# LOGGING LEVELS
+log4j.logger.debug=DEBUG, DBG
+log4j.logger.errors=ERROR, ERR
+log4j.logger.info=INFO, INF
+
+# debug appender
+log4j.appender.DBG = ${rollingFileAppender}
+log4j.appender.DBG.File = ${logsPath}/debug.log
+log4j.appender.DBG.MaxFileSize = ${maxFileSize}
+log4j.appender.DBG.MaxBackupIndex = ${maxBackupIndex}
+log4j.appender.DBG.layout = ${layout}
+log4j.appender.DBG.layout.ConversionPattern = ${conversionPattern}
+log4j.appender.DBG.encoding = ${encoding}
+
+# error appender
+log4j.appender.ERR = ${rollingFileAppender}
+log4j.appender.ERR.File = ${logsPath}/error.log
+log4j.appender.DBG.MaxFileSize = ${maxFileSize}
+log4j.appender.DBG.MaxBackupIndex = ${maxBackupIndex}
+log4j.appender.DBG.layout = ${layout}
+log4j.appender.DBG.layout.ConversionPattern = ${conversionPattern}
+log4j.appender.DBG.encoding = ${encoding}
+
+# info appender
+log4j.appender.INF = ${rollingFileAppender}
+log4j.appender.INF.File = ${logsPath}/info.log
+log4j.appender.DBG.MaxFileSize = ${maxFileSize}
+log4j.appender.DBG.MaxBackupIndex = ${maxBackupIndex}
+log4j.appender.DBG.layout = ${layout}
+log4j.appender.DBG.layout.ConversionPattern = ${conversionPattern}
+log4j.appender.DBG.encoding = ${encoding}

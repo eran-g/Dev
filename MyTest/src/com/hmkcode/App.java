@@ -15,11 +15,11 @@ public class App{
       // step 1
         Document document = new Document();
         // step 2
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:/Users/erang/workspace/Dev/MyTest/WebContent/pdf.pdf"));
+        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:/Users/erang/git/Dev/MyTest/WebContent/pdf.pdf"));
         // step 3
         document.open();
         // step 4
-        XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream("C:/Users/erang/workspace/Dev/MyTest/WebContent/index.html")); 
+        XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream("C:/Users/erang/git/Dev/MyTest/WebContent/index.html")); 
         //step 5
          document.close();
  

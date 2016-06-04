@@ -1,0 +1,8 @@
+DEBUG   2016-05-30 22:34:37,825 [main] Test  - this is a debug log message
+INFO    2016-05-30 22:34:37,826 [main] Test  - this is a information log message
+WARN    2016-05-30 22:34:37,826 [main] Test  - this is a warning log message
+ERROR   2016-05-30 22:34:37,826 [main] Test  - this is an error log message
+DEBUG   2016-05-30 22:34:55,563 [main] Test  - this is a debug log message
+INFO    2016-05-30 22:34:55,565 [main] Test  - this is a information log message
+WARN    2016-05-30 22:34:55,565 [main] Test  - this is a warning log message
+ERROR   2016-05-30 22:34:55,565 [main] Test  - this is an error log message

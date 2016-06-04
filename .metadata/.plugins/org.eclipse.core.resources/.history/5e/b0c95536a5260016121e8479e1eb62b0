@@ -1,0 +1,17 @@
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+public class Test {
+
+	static final Logger debugLog = Logger.getLogger("debugLogger");
+	static final Logger errorLog = Logger.getLogger("errorLogger");
+	
+	public static void main(String[] args) {
+		
+		String log4jConfigFile = "util\\log4j.properties";
+        PropertyConfigurator.configure(log4jConfigFile);
+        
+        debugLog.debug("this is a debug log message");
+        errorLog.debug("this is a error log message");
+	}
+}

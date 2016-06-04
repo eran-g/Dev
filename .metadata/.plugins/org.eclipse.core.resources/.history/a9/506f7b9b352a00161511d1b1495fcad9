@@ -1,0 +1,70 @@
+package com.test.util;
+
+import org.apache.log4j.Logger;
+
+import com.nw.common.util.XStr;
+import com.nw.util.ExceptionHelper;
+
+public class AppLogger extends Logger{
+	
+	public AppLogger(){
+		super("debug");
+	}
+		
+	public AppLogger(String id){
+		super(id);
+	}
+	
+	public void debug(String msg){
+		getLogger("debug").debug(msg);
+	}
+
+	public void alert(String msg){
+		getLogger("alert").info(msg);
+	}
+
+	public void error(Exception e){
+		
+		printStack(e);
+		
+		String msg = e.getClass().getSimpleName()+"\n";
+		
+		msg += "  "+new XStr(e.getMessage(),150).toString().trim()+"\n";
+		
+		StackTraceElement[] stack = e.getStackTrace();
+		boolean found = false;
+		
+		for(int i=0; !found && i<stack.length; i++){
+			if(stack[i].getClassName().startsWith("com.mk.") || stack[i].getClassName().startsWith("com.nw.")){
+				found = true;
+				msg += "  "+stack[i].getClassName()+" --> ";
+				msg += stack[i].getMethodName()+" (";
+				msg += stack[i].getLineNumber()+")";
+			}
+		}
+		getLogger("errors").error(msg);
+	}
+	
+	
+	private void printStack(Exception e) {
+		
+		String exStr = ExceptionHelper.getExceptionLogStr(e); 
+		getLogger("temp").info(exStr);
+	}
+
+	public void error(String msg){
+		getLogger("errors").error(msg);
+	}
+	
+	public void error(String msg, Exception e){
+		getLogger("errors").error(msg+" Exception: "+e.toString());
+	}
+
+	public void info(String msg){
+		getLogger("info").info(msg);
+	}
+
+	public void monitoringinformation(String msg){
+		getLogger("monitoringinformation").info(msg);
+	}
+}

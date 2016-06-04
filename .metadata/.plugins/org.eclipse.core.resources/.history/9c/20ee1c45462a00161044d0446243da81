@@ -1,0 +1,40 @@
+04/06/16 13:04:12 INFO  # test inf
+04/06/16 13:04:45 INFO  # test inf
+04/06/16 13:10:35 INFO  # test inf
+04/06/16 13:12:02 INFO  # test inf
+04/06/16 13:12:38 INFO  # test inf
+04/06/16 13:18:33 INFO  # test inf
+04/06/16 13:18:48 INFO  # test inf
+04/06/16 13:19:48 INFO  # test inf
+04/06/16 13:19:49 INFO  # test inf
+04/06/16 13:21:37 INFO  # test inf
+04/06/16 13:27:53 INFO  # test inf
+04/06/16 13:35:10 INFO  # com.test.util.AppLogger test inf
+04/06/16 13:35:53 INFO  com.test.util.AppLogger # test inf
+04/06/16 13:36:53 INFO  AppLogger.java # test inf
+04/06/16 13:38:20 INFO  info # test inf
+2016-06-04-main--INFO -info      :test inf
+2016-06-04-main--INFO -info      :test inf
+2016-06-04-main--INFO -info      :test method
+2016-06-04--INFO -info      :test inf
+2016-06-04--INFO -info      :test method
+2016-06-04 13:46:38--INFO -info      :test inf
+2016-06-04 13:46:38--INFO -info      :test method
+2016-06-04 13:47:39--info      :test inf
+2016-06-04 13:47:39--info      :test method
+04/06/16 13:48:05 INFO  # test inf
+04/06/16 13:48:05 INFO  # test method
+2016-06-04 13:48:47 INFO  # test inf
+2016-06-04 13:48:47 INFO  # test method
+2016-06-04 13:49:31 INFO #test inf
+2016-06-04 13:49:31 INFO #test method
+2016-06-04 13:49:45 INFO  # test inf
+2016-06-04 13:49:45 INFO  # test method
+2016-06-04 13:51:47 INFO  # test inf
+2016-06-04 13:51:47 INFO  # test method
+2016-06-04 13:51:48 INFO  # test inf
+2016-06-04 13:51:48 INFO  # test method
+2016-06-04 13:51:49 INFO  # test inf
+2016-06-04 13:51:49 INFO  # test method
+2016-06-04 13:51:57 INFO  # test inf
+2016-06-04 13:51:57 INFO  # test method

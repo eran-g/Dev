@@ -1,0 +1,16 @@
+# Define the root logger with appender file
+logsPath = logs
+
+# LOGGING LEVELS
+log4j.logger.debug=DEBUG, DBG
+log4j.logger.errors=ERROR, ERR
+log4j.logger.info=INFO, INF
+
+# info log
+log4j.appender.INF = org.apache.log4j.RollingFileAppender
+log4j.appender.INF.File = ${logsPath}/info.log
+log4j.appender.INF.MaxFileSize = 1000KB
+log4j.appender.INF.MaxBackupIndex = 10
+log4j.appender.INF.layout = org.apache.log4j.PatternLayout
+log4j.appender.INF.layout.ConversionPattern = %d{dd/MM/yy HH:mm:ss} %-5p # %m%n
+log4j.appender.INF.encoding = UTF-8

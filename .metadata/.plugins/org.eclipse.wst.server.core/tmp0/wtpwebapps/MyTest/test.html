@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="windows-1255">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			var obj = {id:1, tripId:123, json: JSON.stringify({"jid":12, "jname":"mjname"})};
+			console.log('obj');
+			console.log(obj);
+			
+			var stringified = JSON.stringify(obj);
+			console.log('\nstringified')
+			console.log(stringified)
+			
+			var parsed = JSON.parse(stringified);
+			console.log('\nparsed');
+			console.log(parsed);
+			
+			function replacer(key, val){
+				
+				if(key == 'mjson'){
+					return JSON.stringify(val);
+				}
+				return val;
+			}
+			//console.log(JSON.stringify(obj));
+			//console.log(JSON.stringify(JSON.stringify(JSON.stringify(obj))));
+			//console.log(JSON.stringify(JSON.stringify(JSON.stringify(JSON.stringify(obj)))));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
